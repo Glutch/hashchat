@@ -1,19 +1,22 @@
 import React, { PropTypes } from 'react'
 import injectSheet from 'react-jss'
-//import Header from './common/Header'
+import Sidebar from './sidebar/Sidebar'
 
-const styles = {
-  content: {
-    padding: 20
+@injectSheet({
+  box: {
+    display: 'flex',
+    height: '100vh',
+    fontFamily: 'Proxima Nova'
   }
-}
+})
 
 class App extends React.Component {
   render() {
     const { classes } = this.props
     return (
-      <div>
-        <div className={classes.content}>
+      <div className={classes.box}>
+        <Sidebar />
+        <div>
           {this.props.children}
         </div>
       </div>
@@ -21,4 +24,4 @@ class App extends React.Component {
   }
 }
 
-export default injectSheet(styles)(App)
+export default App

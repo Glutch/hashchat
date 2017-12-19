@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-//import courses from './courseReducer'
+import messages from './messages'
 
 const reducer = combineReducers({
-  //courses
+  messages
 })
 
 export default reducer
