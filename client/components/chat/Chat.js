@@ -3,16 +3,16 @@ import { Link } from 'react-router'
 import injectSheet from 'react-jss'
 import { connect } from 'react-redux'
 import * as messagesActions from '../../actions/messages'
+import Message from './Message'
 
 @injectSheet({
   chat: {
     height: 'calc(100vh - 60px)',
     width: 'calc(100vw - 300px)',
-    overflowY: 'scroll'
-  },
-  message: {
-    padding: 18.5,
-    borderBottom: '2px solid #eaeaea'
+    overflowY: 'scroll',
+    "& div:last-child": {
+      borderBottom: 0
+    }
   }
 })
 
@@ -21,17 +21,16 @@ import * as messagesActions from '../../actions/messages'
 }))
 
 class Chat extends React.Component {
-
-  generateMessages = (message, index) => {
-    const { classes } = this.props
-    return <div key={index} className={classes.message}>{message.text}</div>
+  componentDidUpdate(){
+    this.refs.chatBox.scrollTop = this.refs.chatBox.scrollHeight
   }
-
   render() {
     const { classes } = this.props
     return (
-      <div className={classes.chat}>
-        {this.props.messages.map(this.generateMessages)}
+      <div ref='chatBox' className={classes.chat}>
+        {this.props.messages.map((message, i) => {
+          return <Message key={i} message={message} />
+        })}
       </div>
     )
   }

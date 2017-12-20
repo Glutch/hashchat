@@ -1,6 +1,26 @@
-export const newMessage = text => {
+import socket from '../tools/socket'
+
+export const newMessage = message => {
+  return dispatch => {
+    socket.emit('newMessage', message)
+    dispatch({type: 'NEW_MESSAGE', message})
+  }
+}
+
+export const fetchMessage = message => {
   return {
-    type: 'NEW_MESSAGE',
-    text
+    type: 'FETCH_MESSAGE',
+    message
+  }
+}
+
+export const fetchMessages = () => {
+  return dispatch => {
+    socket.emit('fetchMessages', {}, messages => {
+      dispatch({
+        type: 'FETCH_MESSAGES',
+        messages
+      })
+    })
   }
 }

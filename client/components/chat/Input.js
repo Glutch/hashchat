@@ -16,14 +16,16 @@ import * as messagesActions from '../../actions/messages'
 })
 
 @connect(state => ({
-  messages: state.messages
+  user: state.user
 }), {
   newMessage: messagesActions.newMessage
 })
 
 class Input extends React.Component {
   state = {
-    message: { text: '' }
+    message: {
+      text: ''
+    }
   }
 
   onTyping = evt => {
@@ -36,6 +38,7 @@ class Input extends React.Component {
     if (evt.key === 'Enter') {
       const message = this.state.message
       if (message.text != '') {
+        message.user = this.props.user
         this.props.newMessage(message)
         message.text = ''
         this.setState({message})
@@ -49,7 +52,7 @@ class Input extends React.Component {
       <input value={this.state.message.text}
         onChange={this.onTyping}
         onKeyPress={this.onSubmit}
-        placeholder="Write a message"
+        placeholder={`Write a message, ${this.props.user}`}
         className={classes.input}/>
     )
   }
