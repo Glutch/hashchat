@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import injectSheet from 'react-jss'
 import { connect } from 'react-redux'
 import * as messagesActions from '../../actions/messages'
+import matchHashtags from '../../tools/matchHashtags'
 
 @injectSheet({
   input: {
@@ -32,17 +33,21 @@ class Input extends React.Component {
     const message = this.state.message
     message.text = evt.target.value
     this.setState({message})
+
   }
 
   onSubmit = evt => {
+    const message = this.state.message
     if (evt.key === 'Enter') {
-      const message = this.state.message
       if (message.text != '') {
         message.user = this.props.user
         this.props.newMessage(message)
         message.text = ''
         this.setState({message})
       }
+    }
+    if (evt.key === ' ') {
+      console.log(matchHashtags(message.text))
     }
   }
 

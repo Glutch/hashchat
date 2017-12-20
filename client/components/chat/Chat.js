@@ -8,9 +8,9 @@ import Message from './Message'
 @injectSheet({
   chat: {
     height: 'calc(100vh - 60px)',
-    width: 'calc(100vw - 300px)',
+    width: 'calc(100vw - 220px)',
     overflowY: 'scroll',
-    "& div:last-child": {
+    '& div:last-child': {
       borderBottom: 0
     }
   }

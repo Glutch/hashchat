@@ -1,17 +1,16 @@
-const express   = require('express')
-const app       = express()
-const http      = require('http').Server(app)
-const io        = require('socket.io')(http)
-import webpack from 'webpack'
-import path from 'path'
+const express = require('express')
+const app = express()
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
+const webpack = require('webpack')
+const path = require('path')
 import config from '../webpack.config'
-import open from 'open'
-import ninjadb from 'ninjadb'
+const open = require('open')
+const ninjadb = require('ninjadb')
 const messages = ninjadb.create('messages')
 const usernames = ninjadb.create('usernames')
+const hashtags = ninjadb.create('hashtags')
 const aliases = usernames.find()
-
-/* eslint-disable no-console */
 
 const port = 4500
 const compiler = webpack(config)
