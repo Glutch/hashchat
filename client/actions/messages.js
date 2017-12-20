@@ -14,9 +14,9 @@ export const fetchMessage = message => {
   }
 }
 
-export const fetchMessages = () => {
+export const fetchMessages = hashtag => {
   return dispatch => {
-    socket.emit('fetchMessages', {}, messages => {
+    socket.emit('fetchMessages', hashtag, messages => {
       dispatch({
         type: 'FETCH_MESSAGES',
         messages

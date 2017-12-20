@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import injectSheet from 'react-jss'
 import { connect } from 'react-redux'
 import * as messagesActions from '../../actions/messages'
+import * as hashtagActions from '../../actions/hashtag'
 import matchHashtags from '../../tools/matchHashtags'
 
 @injectSheet({
@@ -17,9 +18,11 @@ import matchHashtags from '../../tools/matchHashtags'
 })
 
 @connect(state => ({
-  user: state.user
+  user: state.user,
+  hashtag: state.hashtag
 }), {
-  newMessage: messagesActions.newMessage
+  newMessage: messagesActions.newMessage,
+  updateHashtag: hashtagActions.updateHashtag
 })
 
 class Input extends React.Component {
@@ -47,7 +50,9 @@ class Input extends React.Component {
       }
     }
     if (evt.key === ' ') {
-      console.log(matchHashtags(message.text))
+      this.props.updateHashtag(matchHashtags(message.text))
+      message.text = ''
+      this.setState({message})
     }
   }
 
@@ -57,7 +62,7 @@ class Input extends React.Component {
       <input value={this.state.message.text}
         onChange={this.onTyping}
         onKeyPress={this.onSubmit}
-        placeholder={`Write a message, ${this.props.user}`}
+        placeholder={`Write a message to #${this.props.hashtag}, ${this.props.user}`}
         className={classes.input}/>
     )
   }

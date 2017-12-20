@@ -11,8 +11,7 @@ const matchHashtags = str => {
     .map(ht => ht.toLowerCase())
 
   return hashtags
-    .filter((ht, i) => hashtagsLower.indexOf(ht.toLowerCase()) === i)
-    .slice(0, 1)
+    .filter((ht, i) => hashtagsLower.indexOf(ht.toLowerCase()) === i)[0]
 }
 
 matchHashtags.hashtagRegex = hashtagRegex

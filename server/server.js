@@ -4,13 +4,13 @@ const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const webpack = require('webpack')
 const path = require('path')
-import config from '../webpack.config'
 const open = require('open')
 const ninjadb = require('ninjadb')
 const messages = ninjadb.create('messages')
 const usernames = ninjadb.create('usernames')
 const hashtags = ninjadb.create('hashtags')
 const aliases = usernames.find()
+import config from '../webpack.config'
 
 const port = 4500
 const compiler = webpack(config)
