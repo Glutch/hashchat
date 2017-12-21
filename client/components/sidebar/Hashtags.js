@@ -1,6 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
 import injectSheet from 'react-jss'
+import { connect } from 'react-redux'
+import * as hashtagActions from '../../actions/hashtag'
+import ColorHash from 'color-hash'
+
+const colorHash = new ColorHash()
 
 @injectSheet({
   hashtags: {
@@ -27,16 +32,20 @@ import injectSheet from 'react-jss'
   }
 })
 
+@connect(state => ({}), {
+  updateHashtag: hashtagActions.updateHashtag
+})
+
 class Hashtags extends React.Component {
   render() {
     const { classes } = this.props
     return (
       <div className={classes.hashtags}>
-        {['technology', 'deadmau5', 'reddit', 'meta', 'music'].map(ht => {
+        {this.props.trending.sort((a, b) => b.value - a.value).map(ht => {
           return (
-            <div className={classes.hashtag}>
-            #{ht}
-            <span className={classes.value}>{Math.floor(Math.random() * 1500) + 100}</span>
+            <div onClick={() => {this.props.updateHashtag(ht.hashtag)}} className={classes.hashtag}>
+              <span style={{color: colorHash.hex(ht.hashtag)}}>#{ht.hashtag}</span>
+              <span className={classes.value}>{ht.value}</span>
             </div>
           )
         })}

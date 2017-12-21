@@ -1,3 +1,40 @@
 {
-  "data": []
+  "data": [
+    {
+      "hashtag": "hello",
+      "value": 55
+    },
+    {
+      "hashtag": "ass",
+      "value": 22
+    },
+    {
+      "hashtag": "testing",
+      "value": 36
+    },
+    {
+      "hashtag": "vegans",
+      "value": 18
+    },
+    {
+      "hashtag": "vegan",
+      "value": 29
+    },
+    {
+      "hashtag": "christmas",
+      "value": 17
+    },
+    {
+      "hashtag": "clown",
+      "value": 8
+    },
+    {
+      "hashtag": "home",
+      "value": 21
+    },
+    {
+      "hashtag": "undefined",
+      "value": 5
+    }
+  ]
 }

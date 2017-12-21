@@ -1,14 +1,13 @@
 import React from 'react'
 import injectSheet from 'react-jss'
+import ColorHash from 'color-hash'
+
+const colorHash = new ColorHash()
 
 const styles = {
   username: {
     display: 'block',
-    fontSize: 12,
-    color: '#888'
-  },
-  text: {
-
+    fontSize: 12
   },
   message: {
     padding: 18.5,
@@ -19,7 +18,11 @@ const styles = {
 const Message = ({classes, message}) => {
   return (
     <div className={classes.message}>
-      <span className={classes.username}>{message.user}</span>
+      <span
+        className={classes.username}
+        style={{color: colorHash.hex(message.user)}}>
+        {message.user}
+      </span>
       <span className={classes.text}>{message.text}</span>
     </div>
   )

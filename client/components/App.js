@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import injectSheet from 'react-jss'
 import Sidebar from './sidebar/Sidebar'
 

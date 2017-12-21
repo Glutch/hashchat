@@ -44,15 +44,20 @@ class Input extends React.Component {
     if (evt.key === 'Enter') {
       if (message.text != '') {
         message.user = this.props.user
+        message.hashtag = this.props.hashtag
         this.props.newMessage(message)
         message.text = ''
         this.setState({message})
       }
     }
     if (evt.key === ' ') {
-      this.props.updateHashtag(matchHashtags(message.text))
-      message.text = ''
-      this.setState({message})
+      const currentHashtag = this.props.hashtag
+      const newHashtag = matchHashtags(message.text)
+      if (currentHashtag != newHashtag && newHashtag != undefined){
+        this.props.updateHashtag(newHashtag)
+        message.text = ''
+        this.setState({message})
+      }
     }
   }
 
@@ -62,7 +67,7 @@ class Input extends React.Component {
       <input value={this.state.message.text}
         onChange={this.onTyping}
         onKeyPress={this.onSubmit}
-        placeholder={`Write a message to #${this.props.hashtag}, ${this.props.user}`}
+        placeholder={`Write to #${this.props.hashtag} as ${this.props.user}`}
         className={classes.input}/>
     )
   }

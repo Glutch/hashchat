@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router'
 import injectSheet from 'react-jss'
 import { connect } from 'react-redux'
-import * as messagesActions from '../../actions/messages'
 import Message from './Message'
 
 @injectSheet({

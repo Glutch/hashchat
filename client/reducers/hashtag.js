@@ -1,4 +1,4 @@
-const user = (state = [], action) => {
+const hashtag = (state = [], action) => {
   switch(action.type){
     case 'UPDATE_HASHTAG':
       return action.hashtag
@@ -8,4 +8,4 @@ const user = (state = [], action) => {
   }
 }
 
-export default user
+export default hashtag

@@ -9,6 +9,7 @@
   "dependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "6.8.0",
+    "color-hash": "^1.0.3",
     "ninjadb": "^1.12.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",

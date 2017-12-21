@@ -27,21 +27,50 @@ app.get('*', (req, res) => {
 })
 
 io.on('connection', socket => {
+  let currentHashtag = undefined
   const alias = aliases[Math.floor(Math.random() * aliases.length)]
 
   socket.emit('alias', alias.name)
+  socket.emit('trending', hashtags.find())
+
+  socket.on('updateHashtag', hashtag => {
+    if (hashtag) {
+      socket.leave(currentHashtag)
+      socket.join(hashtag)
+      currentHashtag = hashtag
+
+      console.log('updateHashtag: ' + hashtag)
+
+      const local = hashtags.find({hashtag})
+      if (local) {
+        hashtags.update({
+          hashtag
+        }, {
+          value: local.value + 1
+        })
+      } else {
+        hashtags.push({
+          hashtag,
+          value: 1
+        })
+      }
+    }
+  })
 
   socket.on('newMessage', message => {
     messages.push({
       user: alias.name,
       text: message.text,
+      hashtag: message.hashtag,
       time: Date.now()
     })
-    socket.broadcast.emit('message', message)
+    socket.broadcast.to(currentHashtag).emit('message', message)
   })
 
-  socket.on('fetchMessages', async ({}, respond) => {
-    const data = await messages.find()
+  socket.on('fetchMessages', async (hashtag, respond) => {
+    const data = await messages.filter({hashtag})
+    console.log('fetchMessages: ' + hashtag)
+    console.log(data)
     respond(data)
   })
 })

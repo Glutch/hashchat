@@ -6,5 +6,6 @@ import Window from './components/chat/Window'
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Window} />
+    <Route path="/:hashtag" component={Window} />
   </Route>
 )
