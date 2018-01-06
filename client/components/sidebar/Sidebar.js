@@ -9,7 +9,8 @@ import { connect } from 'react-redux'
   sidebar: {
     borderRight: '2px solid #eaeaea',
     width: 220,
-    padding: 5
+    padding: 5,
+    overflowX: 'scroll'
   }
 })
 

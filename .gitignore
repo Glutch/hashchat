@@ -5,3 +5,5 @@ dump.rdb
 npm-debug.log
 node_modules
 package-lock.json
+messages.json
+hashtags.json

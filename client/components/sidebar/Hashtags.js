@@ -16,15 +16,18 @@ const colorHash = new ColorHash()
     padding: '5px 7px 3px 7px',
     cursor: 'pointer',
     fontWeight: 600,
+    borderRadius: 3,
+    cursor: 'pointer',
+    marginTop: 1,
     '&:hover': {
-      color: '#6f6fe4',
-      cursor: 'pointer',
-      background: '#eee',
-      borderRadius: 3
+      background: '#eee'
     },
     '&hover .value': {
       color: '#000'
     }
+  },
+  chosen: {
+    background: '#eee'
   },
   value: {
     float: 'right',
@@ -32,23 +35,34 @@ const colorHash = new ColorHash()
   }
 })
 
-@connect(state => ({}), {
+@connect(state => ({
+  currHashtag: state.hashtag
+}), {
   updateHashtag: hashtagActions.updateHashtag
 })
 
 class Hashtags extends React.Component {
   render() {
-    const { classes } = this.props
+    const { classes, currHashtag, trending, updateHashtag } = this.props
+    const views = trending.length > 0 ? trending.find(a => a.hashtag === currHashtag).value : 0
+    const hashtags = [...this.props.trending].sort((a, b) => b.value - a.value)
     return (
       <div className={classes.hashtags}>
-        {this.props.trending.sort((a, b) => b.value - a.value).map(ht => {
+
+        <div className={classes.hashtag + ' ' + classes.chosen}>
+          <span style={{color: colorHash.hex(currHashtag)}}>#{currHashtag}</span>
+          <span className={classes.value}>{views}</span>
+        </div>
+
+        {hashtags.map((ht, i) => {
           return (
-            <div onClick={() => {this.props.updateHashtag(ht.hashtag)}} className={classes.hashtag}>
+            <div key={i} onClick={() => {updateHashtag(ht.hashtag)}} className={classes.hashtag}>
               <span style={{color: colorHash.hex(ht.hashtag)}}>#{ht.hashtag}</span>
               <span className={classes.value}>{ht.value}</span>
             </div>
           )
         })}
+
       </div>
     )
   }

@@ -2,39 +2,127 @@
   "data": [
     {
       "hashtag": "hello",
-      "value": 55
+      "value": 73
     },
     {
       "hashtag": "ass",
-      "value": 22
+      "value": 32
     },
     {
       "hashtag": "testing",
-      "value": 36
+      "value": 67
     },
     {
       "hashtag": "vegans",
-      "value": 18
+      "value": 28
     },
     {
       "hashtag": "vegan",
-      "value": 29
+      "value": 40
     },
     {
       "hashtag": "christmas",
-      "value": 17
-    },
-    {
-      "hashtag": "clown",
-      "value": 8
-    },
-    {
-      "hashtag": "home",
       "value": 21
     },
     {
+      "hashtag": "clown",
+      "value": 14
+    },
+    {
+      "hashtag": "home",
+      "value": 66
+    },
+    {
       "hashtag": "undefined",
-      "value": 5
+      "value": 10
+    },
+    {
+      "hashtag": "technology",
+      "value": 1
+    },
+    {
+      "hashtag": "overwatch",
+      "value": 7
+    },
+    {
+      "hashtag": "react",
+      "value": 3
+    },
+    {
+      "hashtag": "redux",
+      "value": 3
+    },
+    {
+      "hashtag": "socket",
+      "value": 2
+    },
+    {
+      "hashtag": "socketio",
+      "value": 4
+    },
+    {
+      "hashtag": "pokemon",
+      "value": 8
+    },
+    {
+      "hashtag": "javascript",
+      "value": 7
+    },
+    {
+      "hashtag": "github",
+      "value": 2
+    },
+    {
+      "hashtag": "cats",
+      "value": 1
+    },
+    {
+      "hashtag": "dogs",
+      "value": 3
+    },
+    {
+      "hashtag": "music",
+      "value": 1
+    },
+    {
+      "hashtag": "questions",
+      "value": 1
+    },
+    {
+      "hashtag": "cooking",
+      "value": 2
+    },
+    {
+      "hashtag": "csgo",
+      "value": 6
+    },
+    {
+      "hashtag": "candy",
+      "value": 1
+    },
+    {
+      "hashtag": "santa",
+      "value": 1
+    },
+    {
+      "hashtag": "programming",
+      "value": 7
+    },
+    {
+      "hashtag": "android",
+      "value": 1
+    },
+    {
+      "hashtag": "animals",
+      "value": 1
+    },
+    {
+      "hashtag": "reddit",
+      "value": 2
+    },
+    {
+      "hashtag": "whatever",
+      "value": 3
     }
   ]
 }
